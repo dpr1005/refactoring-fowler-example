@@ -11,7 +11,7 @@ package ubu.gii.dass.refactoring;
  * 
  */
 
-public class Movie extends MovieType {
+public class Movie{
 
 	private final String _title;
 	private int _priceCode;
@@ -43,7 +43,6 @@ public class Movie extends MovieType {
 		}
 	}
 
-	@Override
 	public int getTypeCode() {
 		return this._movieType.getTypeCode();
 	}
@@ -52,12 +51,10 @@ public class Movie extends MovieType {
 		return _title;
 	}
 
-	@Override
 	public int getFrecuentRenterPoints(Rental rental) {
 		return _movieType.getFrecuentRenterPoints(rental);
 	}
-
-	@Override
+	
 	public double getAmount(Rental rental) {
 		return this._movieType.getAmount(rental);
 	}
