@@ -39,9 +39,9 @@ public class Customer {
 		while (rentals.hasNext()) {
 			Rental each = rentals.next();
 			// determine amounts for each line
-			double thisAmount = each._movie.getAmount(each);
+			double thisAmount = each.get_movie().getAmount(each);
 
-			frequentRenterPoints += each._movie.getFrecuentRenterPoints(each);
+			frequentRenterPoints += each.get_movie().getFrecuentRenterPoints(each);
 			// show figures for this rental
 			result.append("\t").append(each.getMovie().getTitle()).append("\t").append(thisAmount).append("\n");
 			totalAmount += thisAmount;
@@ -61,9 +61,9 @@ public class Customer {
 		while (rentals.hasNext()) {
 			double thisAmount = 0;
 			Rental each = rentals.next();
-			thisAmount = each._movie.getAmount(each);
+			thisAmount = each.get_movie().getAmount(each);
 
-			frequentRenterPoints += each._movie.getFrecuentRenterPoints(each);
+			frequentRenterPoints += each.get_movie().getFrecuentRenterPoints(each);
 			// show figures for this rental
 			result.append("<h2>").append(each.getMovie().getTitle()).append(" ").append(thisAmount).append("</h2>");
 			totalAmount += thisAmount;
