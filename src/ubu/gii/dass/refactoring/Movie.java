@@ -19,7 +19,7 @@ public class Movie extends MovieType {
 
 	public Movie(String title, int priceCode) {
 		_title = title;
-		_priceCode = priceCode;
+		setPriceCode(priceCode);
 	}
 
 	public int getPriceCode() {
@@ -51,4 +51,10 @@ public class Movie extends MovieType {
 	public String getTitle() {
 		return _title;
 	}
+
+	@Override
+	public int getFrecuentRenterPoints(Rental rental) {
+		return _movieType.getFrecuentRenterPoints(rental);
+	}
+
 }
