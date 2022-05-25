@@ -15,6 +15,7 @@ public class Movie extends MovieType {
 
 	private final String _title;
 	private int _priceCode;
+	private MovieType _movieType;
 
 	public Movie(String title, int priceCode) {
 		_title = title;
@@ -27,6 +28,24 @@ public class Movie extends MovieType {
 
 	public void setPriceCode(int arg) {
 		_priceCode = arg;
+		switch (arg) {
+			case MovieType.CHILDRENS:
+				_movieType = new Children();
+				break;
+			case MovieType.NEW_RELEASE:
+				_movieType = new NewRelease();
+				break;
+			case MovieType.REGULAR:
+				_movieType = new Regular();
+				break;
+			default:
+				_movieType = null;
+		}
+	}
+
+	@Override
+	public int getTypeCode() {
+		return this._movieType.getTypeCode();
 	}
 
 	public String getTitle() {
