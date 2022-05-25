@@ -19,4 +19,9 @@ public class NewRelease extends MovieType{
         return frecuentRenterPoints;
     }
 
+    @Override
+    public double getAmount(Rental rental) {
+        return rental.getDaysRented() * 3;
+    }
+
 }
