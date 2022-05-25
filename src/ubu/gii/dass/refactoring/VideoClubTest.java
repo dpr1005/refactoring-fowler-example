@@ -32,11 +32,25 @@ public class VideoClubTest {
 	}
 
 	@After
-	public void tearDown() throws Exception {}
+	public void tearDown() {}
 
 	@Test
 	public void testAlquiler() {
 
+		initRentals();
+
+		String salida = c1.statement();
+
+		String salidaEsperada = "Rental Record for Manuel\n"
+				+ "\tSky Captain\t15.0\n" + "\tAccion Mutante\t2.0\n"
+				+ "\tHermano Oso\t12.0\n" + "Amount owed is 29.0\n"
+				+ "You earned 4 frequent renter points";
+
+		assertEquals("Calcula mal el alquiler", salidaEsperada, salida);
+
+	}
+
+	private void initRentals() {
 		Rental r1 = new Rental(m11, 5);
 		Rental r2 = new Rental(m0, 1);
 		Rental r3 = new Rental(m2, 10);
@@ -44,16 +58,20 @@ public class VideoClubTest {
 		c1.addRental(r1);
 		c1.addRental(r2);
 		c1.addRental(r3);
+	}
 
-		String salida = c1.statement();
+	@Test
+	public void testAlquilerHTML() {
 
-		String salidaEsperada = new String("Rental Record for Manuel\n"
-				+ "\tSky Captain\t15.0\n" + "\tAccion Mutante\t2.0\n"
-				+ "\tHermano Oso\t12.0\n" + "Amount owed is 29.0\n"
-				+ "You earned 4 frequent renter points");
+		initRentals();
 
-		assertTrue("Calcula mal el alquiler", salidaEsperada.equals(salida));
+		String salida = c1.htmlStatement();
 
+		String salidaEsperada = "<h1>Rental Record for Manuel</h1>" + "<h2>Sky Captain 15.0</h2>"
+				+ "<h2>Accion Mutante 2.0</h2>" + "<h2>Hermano Oso 12.0</h2>" + "<p>Amount owed is 29.0</p>"
+				+ "<p>You earned 4 frequent renter points</p>";
+
+		assertEquals("Calcula mal el alquiler", salidaEsperada, salida);
 	}
 
 }
